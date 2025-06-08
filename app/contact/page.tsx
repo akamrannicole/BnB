@@ -1,13 +1,16 @@
 "use client"
 
 import type React from "react"
-
 import { useState } from "react"
+import { addDoc, collection, Timestamp } from "firebase/firestore"
+import { db } from "@/lib/firebase"
 import { Mail, Phone, MapPin, Send } from "lucide-react"
 import { Button } from "@/components/ui/button"
 
 export default function ContactPage() {
   const [formSubmitted, setFormSubmitted] = useState(false)
+  const [loading, setLoading] = useState(false)
+  const [error, setError] = useState("")
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -20,25 +23,38 @@ export default function ContactPage() {
     setFormData((prev) => ({ ...prev, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Here we would normally handle the form submission to Firebase
-    console.log("Form data:", formData)
-    // Show success message
-    setFormSubmitted(true)
-    // Reset form
-    setFormData({
-      name: "",
-      email: "",
-      phone: "",
-      message: "",
-    })
+    setLoading(true)
+    setError("")
+
+    try {
+      // Save message to Firestore
+      await addDoc(collection(db, "messages"), {
+        ...formData,
+        createdAt: Timestamp.now(),
+        status: "unread", // Admin can mark as read
+      })
+
+      console.log("Message saved:", formData)
+      setFormSubmitted(true)
+      setFormData({
+        name: "",
+        email: "",
+        phone: "",
+        message: "",
+      })
+    } catch (error) {
+      console.error("Error saving message:", error)
+      setError("Failed to send message. Please try again.")
+    } finally {
+      setLoading(false)
+    }
   }
 
   return (
     <div className="pt-24 pb-16">
-      {/* Contact Hero */}
-      <section className="py-12 md:py-20 bg-primary-dark text-white">
+      <section className="py-12 md:py-20 bg-[#0E2838] text-white">
         <div className="container px-6">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h1 className="text-3xl md:text-5xl font-bold">Contact Us</h1>
@@ -47,11 +63,9 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Contact Information & Form */}
       <section className="py-16 md:py-24">
         <div className="container px-6">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Contact Information */}
             <div className="space-y-8">
               <div>
                 <h2 className="text-3xl font-bold text-primary-dark mb-6">Get in Touch</h2>
@@ -62,12 +76,12 @@ export default function ContactPage() {
               </div>
 
               <div className="space-y-6">
-                <ContactInfoItem icon={<Phone className="h-6 w-6" />} label="Phone" value="+254 712 345 678" />
+                <ContactInfoItem icon={<Phone className="h-6 w-6" />} label="Phone" value="+254 713908113" />
                 <ContactInfoItem icon={<Mail className="h-6 w-6" />} label="Email" value="kilimani.haven@gmail.com" />
                 <ContactInfoItem
                   icon={<MapPin className="h-6 w-6" />}
                   label="Address"
-                  value="Kilimani, Nairobi, Kenya"
+                  value="Golden Mango Heights, Kilimani, Nairobi, Kenya"
                 />
               </div>
 
@@ -80,10 +94,8 @@ export default function ContactPage() {
               </div>
             </div>
 
-            {/* Contact Form */}
             <div className="bg-white rounded-lg shadow-md p-8 border">
               <h2 className="text-2xl font-bold text-primary-dark mb-6">Send Us a Message</h2>
-
               {formSubmitted ? (
                 <div className="bg-green-50 text-green-800 rounded-lg p-6 text-center">
                   <svg
@@ -100,13 +112,15 @@ export default function ContactPage() {
                     />
                   </svg>
                   <h3 className="text-xl font-bold mb-2">Thank You!</h3>
-                  <p className="mb-4">Your message has been sent successfully.</p>
+                  <p className="mb-4">Your message has been sent successfully. We'll get back to you soon!</p>
                   <Button onClick={() => setFormSubmitted(false)} className="bg-green-600 hover:bg-green-700">
                     Send Another Message
                   </Button>
                 </div>
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-6">
+                  {error && <div className="bg-red-50 text-red-800 p-4 rounded-lg text-sm">{error}</div>}
+
                   <div>
                     <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                       Full Name
@@ -172,10 +186,11 @@ export default function ContactPage() {
 
                   <Button
                     type="submit"
-                    className="w-full bg-secondary-coral hover:bg-secondary-coral/90 text-white py-3"
+                    disabled={loading}
+                    className="w-full bg-[#F26D50] hover:bg-[#f26d50cc] text-white py-3"
                   >
                     <Send className="mr-2 h-5 w-5" />
-                    Send Message
+                    {loading ? "Sending..." : "Send Message"}
                   </Button>
                 </form>
               )}
@@ -184,21 +199,24 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* Map Section */}
       <section className="py-12 bg-gray-50">
         <div className="container px-6">
           <h2 className="text-2xl font-bold text-primary-dark mb-8 text-center">Our Location</h2>
-          <div className="rounded-lg overflow-hidden shadow-md h-[400px] bg-gray-200 flex items-center justify-center">
-            <div className="text-gray-500 text-center">
-              <MapPin className="h-12 w-12 mx-auto mb-2" />
-              <p className="text-lg">Interactive Map</p>
-              <p className="text-sm">Kilimani, Nairobi, Kenya</p>
-            </div>
+          <div className="rounded-lg overflow-hidden shadow-md h-[400px]">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.8013043739074!2d36.78355027496571!3d-1.2937017986940063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTcnMzcuMyJTIDM2wrA0NycxMC4xIkU!5e0!3m2!1sen!2ske!4v1749157700743!5m2!1sen!2ske"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              className="w-full h-full"
+            ></iframe>
           </div>
         </div>
       </section>
 
-      {/* FAQ Section */}
       <section className="py-16 md:py-24">
         <div className="container px-6">
           <div className="max-w-3xl mx-auto">

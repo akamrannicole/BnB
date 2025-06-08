@@ -17,8 +17,8 @@ import {
 export default function AmenitiesPage() {
   return (
     <div className="pt-24 pb-16">
-      {/* Amenities Hero */}
-      <section className="py-12 md:py-20 bg-primary-dark text-white">
+      
+      <section className="py-12 md:py-20 bg-[#0E2838] text-white">
         <div className="container px-6">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h1 className="text-3xl md:text-5xl font-bold">Amenities</h1>
@@ -27,7 +27,6 @@ export default function AmenitiesPage() {
         </div>
       </section>
 
-      {/* Amenities Overview */}
       <section className="py-16 md:py-24">
         <div className="container px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
@@ -44,7 +43,7 @@ export default function AmenitiesPage() {
             </div>
             <div>
               <img
-                src="/placeholder.svg?height=600&width=800"
+                src="/images/WhatsApp Image 2025-05-02 at 21.05.55_93e141e2.jpg"
                 alt="Comfortable living space"
                 className="rounded-lg shadow-lg object-cover w-full h-[400px]"
               />
@@ -53,13 +52,12 @@ export default function AmenitiesPage() {
         </div>
       </section>
 
-      {/* Amenities Categories */}
       <section className="py-16 bg-gray-50">
         <div className="container px-6">
           <h2 className="text-3xl font-bold text-primary-dark mb-12 text-center">What We Offer</h2>
 
           <div className="space-y-16">
-            {/* Essentials */}
+  
             <AmenityCategory
               title="Essentials"
               items={[

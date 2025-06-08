@@ -1,16 +1,17 @@
 import type React from "react"
-import { Bed, Wifi, Coffee, Utensils, Star, Calendar, ArrowRight, MapPin } from 'lucide-react'
+import { Bed, Wifi, Coffee, Utensils, Star, Calendar, ArrowRight, MapPin } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import Image from "next/image"
 
 export default function Home() {
   return (
     <>
-
       <section
         className="h-screen flex items-center justify-center"
         style={{
-          backgroundImage: "linear-gradient(to bottom, rgba(14, 40, 56, 0.7), rgba(14, 40, 56, 0.4)), url('/placeholder.svg?height=1200&width=2000')",
+          backgroundImage:
+            "linear-gradient(to bottom, rgba(14, 40, 56, 0.7), rgba(14, 40, 56, 0.4)), url('/images/WhatsApp Image 2025-05-02 at 21.05.52_6c1503ff.jpg')",
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundBlendMode: "overlay",
@@ -21,15 +22,20 @@ export default function Home() {
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold">Your Perfect Stay in Kilimani</h1>
             <p className="text-xl md:text-2xl opacity-90">Experience comfort and luxury in the heart of Nairobi</p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
-              <Button className="bg-coral hover:bg-coral/90 text-white text-lg py-6 px-8">
-                Book Your Stay
-              </Button>
-              <Button
-                variant="outline"
-                className="bg-transparent border-white text-white hover:bg-white/10 text-lg py-6 px-8"
+               <Link href="/booking" passHref>
+             <Button className="bg-coral hover:bg-coral/90 text-white text-lg py-6 px-8">
+                  Book Your Stay
+             </Button>
+           </Link>
+
+         <Link href="/contact" passHref>
+          <Button
+            variant="outline"
+               className="bg-transparent border-white text-white hover:bg-white/10 text-lg py-6 px-8"
               >
-                Take a Tour
-              </Button>
+             Contact Us
+          </Button>
+         </Link>
             </div>
           </div>
         </div>
@@ -39,9 +45,11 @@ export default function Home() {
         <div className="container px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2">
-              <img
-                src="/placeholder.svg?height=600&width=800"
+              <Image
+                src="/images/WhatsApp Image 2025-05-02 at 21.05.52_6c1503ff.jpg"
                 alt="Kilimani Haven Exterior"
+                width={600}
+                height={500}
                 className="rounded-lg shadow-lg object-cover w-full h-[500px]"
               />
             </div>
@@ -109,10 +117,7 @@ export default function Home() {
                 Take a visual tour of our beautifully designed Airbnb space
               </p>
             </div>
-            <Link
-              href="/gallery"
-              className="mt-4 md:mt-0 flex items-center text-coral font-medium hover:underline"
-            >
+            <Link href="/gallery" className="mt-4 md:mt-0 flex items-center text-coral font-medium hover:underline">
               View All Photos
               <ArrowRight className="ml-2 h-5 w-5" />
             </Link>
@@ -120,22 +125,26 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             <div className="overflow-hidden rounded-lg shadow-md">
-              <img
-                src="public/images/WhatsApp Image 2025-05-02 at 21.05.55_93e141e2.jpg"
+              <Image
+                src="/images/WhatsApp Image 2025-05-02 at 21.05.55_93e141e2.jpg"
                 alt="Living Room"
+                width={600}
+                height={400}
                 className="gallery-image w-full h-64 object-cover"
               />
             </div>
             <div className="overflow-hidden rounded-lg shadow-md">
-              <img
-                src="public/images/WhatsApp Image 2025-05-02 at 21.05.52_2f3fc363.jpg"
+              <Image
+                src="/images/WhatsApp Image 2025-05-02 at 21.05.52_2f3fc363.jpg"
                 alt="Bedroom"
+                width={600}
+                height={400}
                 className="gallery-image w-full h-64 object-cover"
               />
             </div>
             <div className="overflow-hidden rounded-lg shadow-md">
               <img
-                src="/placeholder.svg?height=400&width=600"
+                src="/images/WhatsApp Image 2025-05-02 at 21.05.52_6c1503ff.jpg"
                 alt="Kitchen"
                 className="gallery-image w-full h-64 object-cover"
               />
@@ -156,16 +165,19 @@ export default function Home() {
               text="The apartment was immaculate and exactly as pictured. Great location and the host was very responsive. Would definitely stay again!"
               author="Sarah M."
               location="United States"
+              image="https://images.pexels.com/photos/2381069/pexels-photo-2381069.jpeg?cs=srgb&dl=pexels-emmy-e-1252107-2381069.jpg&fm=jpg"
             />
             <TestimonialCard
               text="Perfect location in Kilimani! The apartment had everything we needed and was so comfortable. The host gave us great restaurant recommendations too."
               author="David K."
               location="United Kingdom"
+              image="https://thumbs.dreamstime.com/b/portrait-male-african-american-professional-possibly-business-executive-corporate-ceo-finance-attorney-lawyer-sales-stylish-155546880.jpg"
             />
             <TestimonialCard
               text="One of the best Airbnbs I've stayed in. Clean, stylish, and the host went above and beyond to make our stay special."
               author="Amina J."
               location="Kenya"
+              image="https://img.freepik.com/free-photo/happy-friendly-legal-expert-posing-outside_74855-2271.jpg"
             />
           </div>
         </div>
@@ -192,14 +204,13 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Location Section */}
       <section className="py-16 md:py-24">
         <div className="container px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2 space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-navy">Prime Location</h2>
               <p className="text-gray-600 text-lg">
-                Located in the upscale Kilimani neighborhood, our Airbnb offers easy access to:
+                Located in the upscale Kilimani Golden Mango Heights neighborhood, our Airbnb offers easy access to:
               </p>
               <ul className="space-y-3 text-gray-600">
                 <LocationFeature text="Shopping centers (Yaya Centre, Junction Mall)" />
@@ -212,18 +223,20 @@ export default function Home() {
                 <Button className="bg-coral hover:bg-coral/90">Get Directions</Button>
               </div>
             </div>
-            <div className="lg:w-1/2">
-              <div className="rounded-lg overflow-hidden shadow-lg h-[400px]">
-                {/* This would be replaced with an actual map, for now using placeholder */}
-                <div className="w-full h-full bg-gray-200 flex items-center justify-center">
-                  <div className="text-gray-500 text-center">
-                    <MapPin className="h-12 w-12 mx-auto mb-2" />
-                    <p className="text-lg">Interactive Map</p>
-                    <p className="text-sm">Kilimani, Nairobi, Kenya</p>
-                  </div>
-                </div>
-              </div>
-            </div>
+        <div className="lg:w-1/2">
+        <div className="rounded-lg overflow-hidden shadow-lg h-[400px]">
+          <iframe
+             src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3988.8013043739074!2d36.78355027496571!3d-1.2937017986940063!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMcKwMTcnMzcuMyJTIDM2wrA0NycxMC4xIkU!5e0!3m2!1sen!2ske!4v1749157700743!5m2!1sen!2ske"
+             width="100%"
+             height="100%"
+             style={{ border: 0 }}
+             allowFullScreen
+             loading="lazy"
+             referrerPolicy="no-referrer-when-downgrade"
+             className="w-full h-full"
+          ></iframe>
+          </div>
+       </div>
           </div>
         </div>
       </section>
@@ -251,10 +264,12 @@ const TestimonialCard = ({
   text,
   author,
   location,
+  image,
 }: {
   text: string
   author: string
   location: string
+  image?: string
 }) => (
   <div className="bg-white rounded-lg p-6 shadow-sm border">
     <div className="flex mb-4">
@@ -264,7 +279,21 @@ const TestimonialCard = ({
     </div>
     <p className="text-gray-600 mb-6 italic">"{text}"</p>
     <div className="flex items-center">
-      <div className="h-10 w-10 rounded-full bg-gray-300 mr-3"></div>
+      <div className="h-12 w-12 rounded-full overflow-hidden mr-3 bg-gray-300">
+        {image ? (
+          <Image
+            src={image || "/placeholder.svg"}
+            alt={`${author} profile`}
+            width={48}
+            height={48}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gradient-to-br from-coral to-navy flex items-center justify-center text-white font-semibold">
+            {author.charAt(0)}
+          </div>
+        )}
+      </div>
       <div>
         <p className="font-semibold text-navy">{author}</p>
         <p className="text-sm text-gray-500">{location}</p>

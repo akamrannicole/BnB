@@ -1,4 +1,3 @@
-// components/footer.tsx
 import Link from "next/link"
 import { Mail, MapPin, Phone, Facebook, Instagram, Twitter } from 'lucide-react'
 import { Button } from "@/components/ui/button"
@@ -6,10 +5,8 @@ import { Button } from "@/components/ui/button"
 const Footer = () => {
   return (
     <footer className="bg-navy text-white">
-      {/* Main Footer */}
       <div className="container mx-auto py-12 px-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* About */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">
               Kilimani<span className="text-coral">Haven</span>
@@ -31,7 +28,6 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Quick Links</h2>
             <ul className="space-y-2">
@@ -63,29 +59,29 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact */}
           <div className="space-y-4">
             <h2 className="text-xl font-semibold">Contact Us</h2>
             <ul className="space-y-3">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 mr-2 mt-0.5 text-coral" />
-                <span className="text-gray-300">Kilimani, Nairobi, Kenya</span>
+                <span className="text-gray-300">Golden Mango Heights, Kilimani, Nairobi, Kenya</span>
               </li>
               <li className="flex items-start">
                 <Phone className="h-5 w-5 mr-2 mt-0.5 text-coral" />
-                <span className="text-gray-300">+254 712 345 678</span>
+                <span className="text-gray-300">+254 713 908 113</span>
               </li>
               <li className="flex items-start">
                 <Mail className="h-5 w-5 mr-2 mt-0.5 text-coral" />
                 <span className="text-gray-300">kilimani.haven@gmail.com</span>
               </li>
             </ul>
-            <Button className="bg-coral hover:bg-coral/90 text-white mt-2">Book Now</Button>
+             <Link href="/booking" className="block">
+              <Button className="w-half bg-[#F26D50] hover:bg-[#F26D50]/90 text-white">Book Now</Button>
+            </Link>
           </div>
         </div>
       </div>
 
-      {/* Copyright */}
       <div className="border-t border-gray-800 py-6">
         <div className="container mx-auto px-6 flex flex-col md:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">© {new Date().getFullYear()} KilimaniHaven. All rights reserved.</p>

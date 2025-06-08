@@ -1,27 +1,30 @@
 import { Check } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Link from "next/link"
+import { HomeIcon } from "@heroicons/react/24/solid"
 
 export default function AboutPage() {
   return (
-    <div className="pt-24">
-      {/* About Hero */}
-      <section className="py-12 md:py-20 bg-primary-dark text-white">
-        <div className="container px-6">
-          <div className="max-w-3xl mx-auto text-center space-y-4">
-            <h1 className="text-3xl md:text-5xl font-bold">About Kilimani Haven</h1>
-            <p className="text-lg md:text-xl opacity-90">Your home away from home in the heart of Nairobi</p>
+    <div className="pt-24"> 
+     
+      <section className="py-12 md:py-20 bg-[#0E2838] text-white">
+         <div className="container px-4">
+           <div className="max-w-3xl mx-auto text-center space-y-4">
+            <div className="flex items-center justify-center gap-2">
+             <h1 className="text-3xl md:text-5xl font-bold">About Kilimani Haven</h1>
+             <HomeIcon className="w-8 h-8 text-white" />
           </div>
-        </div>
+            <p className="text-lg md:text-xl opacity-90">Your home away from home in the heart of Nairobi</p>
+             </div>
+          </div>
       </section>
 
-      {/* Our Story */}
-      <section className="py-16 md:py-24">
+      <section className="py-24 md:py-4">
         <div className="container px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2">
               <img
-                src="/placeholder.svg?height=600&width=800"
+                src="/images/WhatsApp Image 2025-05-02 at 21.05.55_93e141e2.jpg"
                 alt="Interior of Kilimani Haven"
                 className="rounded-lg shadow-lg object-cover w-full h-[500px]"
               />
@@ -33,8 +36,8 @@ export default function AboutPage() {
                 a truly unique and comfortable place to stay.
               </p>
               <p className="text-gray-600 text-lg">
-                When my aunt first acquired this property in 2018, she envisioned creating more than just a place to
-                sleep — she wanted to create an experience that captures the essence of Nairobi's vibrant culture while
+                When I first acquired this property in 2018, I envisioned creating more than just a place to
+                sleep.I wanted to create an experience that captures the essence of Nairobi's vibrant culture while
                 providing all the comforts of home.
               </p>
               <p className="text-gray-600 text-lg">
@@ -46,14 +49,13 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Host Profile */}
       <section className="py-16 bg-gray-50">
         <div className="container px-6">
           <div className="flex flex-col lg:flex-row gap-12 items-center">
             <div className="lg:w-1/2 order-2 lg:order-1 space-y-6">
               <h2 className="text-3xl md:text-4xl font-bold text-primary-dark">Meet Your Host</h2>
               <p className="text-gray-600 text-lg">
-                Hello, I'm [Your Aunt's Name], a proud Nairobi local with over 5 years of experience in hospitality. I'm
+                Hello, I'm Nina Ikai, a proud Nairobi local with over 5 years of experience in hospitality. I'm
                 passionate about making sure my guests have an exceptional stay and leave with wonderful memories of
                 Kenya.
               </p>
@@ -71,7 +73,7 @@ export default function AboutPage() {
             <div className="lg:w-1/2 order-1 lg:order-2 flex justify-center">
               <div className="w-64 h-64 md:w-80 md:h-80 rounded-full overflow-hidden border-4 border-white shadow-xl">
                 <img
-                  src="/placeholder.svg?height=400&width=400"
+                  src="/images/WhatsApp Image 2025-05-30 at 13.54.49_a8863efb.jpg"
                   alt="Your Host"
                   className="w-full h-full object-cover"
                 />
@@ -81,7 +83,6 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* Why Choose Us */}
       <section className="py-16 md:py-24">
         <div className="container px-6">
           <div className="text-center max-w-2xl mx-auto mb-12">
@@ -128,32 +129,32 @@ export default function AboutPage() {
               title="Nairobi National Park"
               distance="15 km"
               description="Experience wildlife in their natural habitat just minutes from the city center"
-              imageUrl="/placeholder.svg?height=300&width=500"
+              imageUrl="https://www.campoeasafaris.com/wp-content/uploads/2021/05/nairobi-national-park-main-gate.jpeg"
             />
             <AttractionCard
               title="Giraffe Centre"
               distance="10 km"
               description="Get up close with the endangered Rothschild's giraffe at this conservation center"
-              imageUrl="/placeholder.svg?height=300&width=500"
+              imageUrl="https://africanspicesafaris.com/wp-content/uploads/2024/09/giraffe-centre-nairobi-feeding-rothschilds-giraffes-1200x675.gif"
             />
             <AttractionCard
               title="Karen Blixen Museum"
               distance="12 km"
               description="Visit the former home of the famous Danish author of 'Out of Africa'"
-              imageUrl="/placeholder.svg?height=300&width=500"
+              imageUrl="https://www.maasaimarakenyapark.com/wp-content/uploads/2022/05/Karen-Blixen-Museum-Day-Tou.jpg"
             />
             <AttractionCard
               title="Maasai Market"
               distance="3 km"
               description="Shop for traditional crafts, jewelry, and souvenirs at this colorful market"
-              imageUrl="/placeholder.svg?height=300&width=500"
+              imageUrl="https://www.twofortheworld.com/wp-content/uploads/2016/06/IMG_5656-1-1024x683.jpg"
             />
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 bg-secondary-coral text-white">
+      <section className="py-16 md:py-24 bg-secondary-coral text-black">
         <div className="container px-6 text-center">
           <div className="max-w-3xl mx-auto space-y-6">
             <h2 className="text-3xl md:text-4xl font-bold">Experience Kilimani Haven For Yourself</h2>

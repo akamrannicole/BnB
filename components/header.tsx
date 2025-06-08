@@ -5,6 +5,7 @@ import Link from "next/link"
 import { Menu, X, Mail, MapPin, Phone, Facebook, Instagram } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { HomeIcon } from "@heroicons/react/24/solid"
 
 const Header = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -27,7 +28,6 @@ const Header = () => {
 
   return (
     <header className="fixed w-full z-50">
-      {/* Top Bar */}
       <div className="bg-primary-dark text-white py-2 px-4 hidden md:block">
         <div className="container mx-auto flex justify-between items-center text-sm">
           <div className="flex items-center space-x-6">
@@ -37,7 +37,7 @@ const Header = () => {
             </div>
             <div className="flex items-center">
               <MapPin className="h-4 w-4 mr-2" />
-              <span>Kilimani, Nairobi, Kenya</span>
+              <span>Golden Mango Heights, Kilimani, Nairobi, Kenya</span>
             </div>
           </div>
           <div className="flex items-center space-x-4">
@@ -49,39 +49,38 @@ const Header = () => {
             </Link>
             <Link href="tel:+254712345678" className="flex items-center">
               <Phone className="h-4 w-4 mr-1" />
-              <span>+254 712 345 678</span>
+              <span>+254 713 908 113</span>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
       <div className={cn("bg-white py-4 px-6 transition-all duration-300 shadow-sm", isScrolled && "shadow-md")}>
         <div className="container mx-auto flex justify-between items-center">
           <Link href="/" className="flex items-center">
+            <HomeIcon className="w-6 h-6 text-black" />
             <span className="font-bold text-xl md:text-2xl text-primary-dark">
               Kilimani<span className="text-secondary-coral">Haven</span>
             </span>
+  
           </Link>
 
-          {/* Desktop Nav */}
           <nav className="hidden md:flex items-center space-x-8">
             <NavItem href="/" label="Home" />
             <NavItem href="/about" label="About" />
             <NavItem href="/gallery" label="Gallery" />
             <NavItem href="/amenities" label="Amenities" />
             <NavItem href="/contact" label="Contact" />
-            <Button className="bg-secondary-coral hover:bg-secondary-coral/90 text-white">Book Now</Button>
+              <Link href="/booking" className="block">
+              <Button className="w-full bg-[#F26D50] hover:bg-[#F26D50]/90 text-white">Book Now</Button>
+            </Link>
           </nav>
-
-          {/* Mobile Nav Toggle */}
           <button className="md:hidden" onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
             {isOpen ? <X className="h-6 w-6 text-primary-dark" /> : <Menu className="h-6 w-6 text-primary-dark" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Nav Menu */}
       {isOpen && (
         <div className="md:hidden bg-white shadow-lg absolute top-full left-0 right-0 py-4 px-6 z-50 border-t">
           <nav className="flex flex-col space-y-4">
@@ -90,7 +89,9 @@ const Header = () => {
             <MobileNavItem href="/gallery" label="Gallery" onClick={() => setIsOpen(false)} />
             <MobileNavItem href="/amenities" label="Amenities" onClick={() => setIsOpen(false)} />
             <MobileNavItem href="/contact" label="Contact" onClick={() => setIsOpen(false)} />
-            <Button className="bg-secondary-coral hover:bg-secondary-coral/90 text-white w-full">Book Now</Button>
+             <Link href="/booking" className="block">
+              <Button className="w-full bg-[#F26D50] hover:bg-[#F26D50]/90 text-white">Book Now</Button>
+            </Link>
           </nav>
         </div>
       )}

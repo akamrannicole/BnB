@@ -9,25 +9,25 @@ export default function GalleryPage() {
   const galleryImages = [
     {
       id: 1,
-      url: "/placeholder.svg?height=600&width=800",
+      url: "/images/WhatsApp Image 2025-05-02 at 21.05.55_93e141e2.jpg",
       alt: "Living Room",
       category: "Interior",
     },
     {
       id: 2,
-      url: "/placeholder.svg?height=600&width=800",
+      url: "/images/WhatsApp Image 2025-05-02 at 21.05.52_2f3fc363.jpg",
       alt: "Bedroom",
       category: "Interior",
     },
     {
       id: 3,
-      url: "/placeholder.svg?height=600&width=800",
+      url: "/images/WhatsApp Image 2025-05-02 at 21.05.52_6c1503ff.jpg",
       alt: "Kitchen",
       category: "Interior",
     },
     {
       id: 4,
-      url: "/placeholder.svg?height=600&width=800",
+      url: "/images/WhatsApp Image 2025-05-02 at 21.05.39_e1f22892.jpg",
       alt: "Bathroom",
       category: "Interior",
     },
@@ -45,14 +45,8 @@ export default function GalleryPage() {
     },
     {
       id: 7,
-      url: "/placeholder.svg?height=600&width=800",
+      url: "/images/WhatsApp Image 2025-05-02 at 21.05.54_2e90daa7.jpg",
       alt: "Dining Area",
-      category: "Interior",
-    },
-    {
-      id: 8,
-      url: "/placeholder.svg?height=600&width=800",
-      alt: "Workspace",
       category: "Interior",
     },
     {
@@ -71,8 +65,7 @@ export default function GalleryPage() {
 
   return (
     <div className="pt-24 pb-16">
-      {/* Gallery Hero */}
-      <section className="py-12 md:py-20 bg-primary-dark text-white">
+      <section className="py-12 md:py-20 bg-[#0E2838] text-white">
         <div className="container px-6">
           <div className="max-w-3xl mx-auto text-center space-y-4">
             <h1 className="text-3xl md:text-5xl font-bold">Gallery</h1>
@@ -81,7 +74,6 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Filter */}
       <section className="py-8 bg-gray-50">
         <div className="container px-6">
           <div className="flex flex-wrap justify-center gap-4">
@@ -102,7 +94,6 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Gallery Grid */}
       <section className="py-12">
         <div className="container px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -123,7 +114,6 @@ export default function GalleryPage() {
         </div>
       </section>
 
-      {/* Image Modal */}
       {selectedImage && (
         <div className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4">
           <button
